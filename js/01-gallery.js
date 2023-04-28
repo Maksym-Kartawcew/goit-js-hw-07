@@ -30,6 +30,8 @@ function onGalleryItemClick(event) {
   );
   instance.show();
   
+  const modalElement = document.querySelector('.modal')
+  modalElement.addEventListener('click', () => { instance.close();})
 
   document.addEventListener('keydown', onModalKeyDown);
   function onModalKeyDown(event) {
