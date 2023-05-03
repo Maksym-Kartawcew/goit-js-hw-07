@@ -27,21 +27,28 @@ function onGalleryItemClick(event) {
         <img src="${event.target.dataset.source}" width="800" height="600">
 
     </div>`,
+
+    {
+    onShow: (instance) => { window.addEventListener('keyDown', onModalKeyDown);}
+		onClose: (instance) => { window.removeEventListener('keyDown', onModalKeyDown); }
+    }
   );
+
+
   instance.show();
-  
+
   const modalElement = document.querySelector('.modal')
   modalElement.addEventListener('click', () => { instance.close();})
+}
 
-  document.addEventListener('keydown', onModalKeyDown);
-  function onModalKeyDown(event) {
-      if (event.code === 'Escape') {
-          instance.close();
-          document.removeEventListener('keydown', onModalKeyDown);
+function onModalKeyDown(event) {
+  if (event.code === 'Escape') {
+      instance.close();
       }
+    }
 
-}
-}
+
+
 
 
 
